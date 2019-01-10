@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='helpful_vectors',
-    version='0.3a',
+    version='0.4a',
     description='Helpful vectors',
     long_description='Helpful vectors for for utility tasks',
     classifiers=[
@@ -23,7 +23,8 @@ setup(
     packages=find_packages(),
     install_requires=[
         'pandas',
-        'numpy'
+        'numpy',
+        'more-itertools'
     ],
     include_package_data=True,
     zip_safe=False

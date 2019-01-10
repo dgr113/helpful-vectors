@@ -2,10 +2,10 @@
 
 import numpy as np
 import pandas as pd
-from typing import Iterable, Any
+from typing import Iterable, Any, List, Union
 from functools import partial
-
-
+from more_itertools import always_iterable
+from helpful_vectors.type_hints import TABLE_DATA_TYPE
 
 
 
@@ -19,6 +19,33 @@ def convert_na_values(df: pd.DataFrame, value: Any = None) -> pd.DataFrame:
     result = df.astype(object).where(df.notnull(), value)
     return result
 
+
+
+def get_consecutive_segments(
+    data: TABLE_DATA_TYPE,
+    columns: Union[str, List[str]]
+
+) -> pd.Series:
+
+    """ Получить индексы последовательностей с одинаковыми идущими подряд элементами
+
+        >>> df = pd.DataFrame({'A': [1,1,1, 4,4,4,4, 3,3], 'B': [1,1,4, 4,4,4,3, 3,3]})
+        >>> df_res = df.reset_index().groupby(['A', 'B'])['index'].apply(np.array)
+        >>> print(df_res)
+                A  B
+        1  1       [0, 1]
+           4          [2]
+        3  3       [7, 8]
+        4  3          [6]
+           4    [3, 4, 5]
+    """
+    if not isinstance(data, pd.DataFrame):
+        data = pd.DataFrame(data)
+
+    available_columns = data.columns.intersection(always_iterable(columns))
+    results = data.reset_index().groupby(available_columns)['index'].apply(np.array)
+
+    return results
 
 
 
