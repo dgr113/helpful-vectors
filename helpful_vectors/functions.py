@@ -24,7 +24,7 @@ def convert_na_values(df: pd.DataFrame, value: Any = None) -> pd.DataFrame:
 
 def get_consecutive_segments(
     data: TABLE_DATA_TYPE,
-    columns: Union[str, List[str], None]
+    columns: Union[str, List[str], None] = None
 
 ) -> pd.Series:
 
