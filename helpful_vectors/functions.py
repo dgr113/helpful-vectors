@@ -21,9 +21,10 @@ def convert_na_values(df: pd.DataFrame, value: Any = None) -> pd.DataFrame:
 
 
 
+
 def get_consecutive_segments(
     data: TABLE_DATA_TYPE,
-    columns: Union[str, List[str]]
+    columns: Union[str, List[str], None]
 
 ) -> pd.Series:
 
@@ -42,8 +43,13 @@ def get_consecutive_segments(
     if not isinstance(data, pd.DataFrame):
         data = pd.DataFrame(data)
 
-    available_columns = data.columns.intersection(always_iterable(columns))
-    results = data.reset_index().groupby(available_columns)['index'].apply(np.array)
+    ### Если переданы конкретные столбцы для группировки - используем их, иначе - используем все столбцы
+    if columns is not None:
+        columns = data.columns.intersection(always_iterable(columns))
+    else:
+        columns = data.columns
+
+    results = data.reset_index().groupby(columns)['index'].apply(np.array)
 
     return results
 
