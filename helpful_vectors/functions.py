@@ -47,7 +47,7 @@ def get_consecutive_segments(
     if columns is not None:
         columns = data.columns.intersection(always_iterable(columns))
     else:
-        columns = data.columns
+        columns = data.columns.tolist()
 
     results = data.reset_index().groupby(columns)['index'].apply(np.array)
 
