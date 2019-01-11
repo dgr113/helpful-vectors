@@ -10,7 +10,7 @@ setup(
     description='Helpful vectors',
     long_description='Helpful vectors for for utility tasks',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Alpha',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.7',
         'Topic :: Data Processing :: Vectors :: Numpy :: Pandas :: Utility',
