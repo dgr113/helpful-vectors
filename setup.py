@@ -6,11 +6,11 @@ from setuptools import setup, find_packages
 
 setup(
     name='helpful_vectors',
-    version='0.4a',
+    version='0.4.1',
     description='Helpful vectors',
     long_description='Helpful vectors for for utility tasks',
     classifiers=[
-        'Development Status :: 4 - Alpha',
+        'Development Status :: 4',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.7',
         'Topic :: Data Processing :: Vectors :: Numpy :: Pandas :: Utility',
