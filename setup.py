@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name='helpful_vectors',
+    name='helpful-vectors',
     version='0.4.1',
     description='Helpful vectors',
     long_description='Helpful vectors for for utility tasks',
